@@ -1,0 +1,14 @@
+-- ============================================
+-- Analysis: Channel Performance
+-- Author: Gilbert
+-- Dataset: BluePeak_Staging.fact_profitability
+-- Purpose: Identify where profitable growth is coming from
+-- ============================================
+SELECT
+    channel,
+    SUM(gross_line_revenue) AS revenue,
+    SUM(contribution_profit) AS profit,
+    SAFE_DIVIDE(SUM(contribution_profit), SUM(gross_line_revenue)) AS margin
+FROM `bluepeak-commerce-analytics.BluePeak_Staging.fact_profitability`
+GROUP BY channel
+ORDER BY profit DESC;

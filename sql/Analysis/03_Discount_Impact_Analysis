@@ -1,0 +1,17 @@
+-- ============================================
+-- Analysis: Discount Impact
+-- Author: Gilbert
+-- Dataset: BluePeak_Staging.fact_profitability
+-- Purpose: Identify whether discounts are helping or hurting
+-- ============================================
+SELECT
+    discount_code,
+    COUNT(DISTINCT order_id) AS orders,
+    SUM(gross_line_revenue) AS revenue,
+    SUM(lineitem_discount_amount) AS discounts,
+    SUM(contribution_profit) AS profit,
+    SAFE_DIVIDE(SUM(contribution_profit), SUM(gross_line_revenue)) AS profit_margin
+FROM `bluepeak-commerce-analytics.BluePeak_Staging.fact_profitability`
+WHERE discount_code IS NOT NULL
+GROUP BY discount_code
+ORDER BY profit_margin ASC;

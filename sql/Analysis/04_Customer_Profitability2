@@ -1,0 +1,21 @@
+-- ============================================
+-- Analysis: Top 20% Customers
+-- Author: Gilbert
+-- Dataset: BluePeak_Staging.fact_profitability
+-- Purpose: Identify which customers segment makes the most money
+-- ============================================
+WITH ranked_customers AS (
+    SELECT
+        customer_id,
+        SUM(contribution_profit) AS profit,
+        NTILE(5) OVER (ORDER BY SUM(contribution_profit) DESC) AS quintile
+    FROM `bluepeak-commerce-analytics.BluePeak_Staging.fact_profitability`
+    GROUP BY customer_id
+)
+SELECT
+    quintile,
+    COUNT(*) AS customers,
+    SUM(profit) AS total_profit
+FROM ranked_customers
+GROUP BY quintile
+ORDER BY quintile;

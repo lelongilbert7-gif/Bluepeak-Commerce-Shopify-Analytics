@@ -9,7 +9,7 @@ BluePeak Commerce Co is a simulated U.S.-based direct-to-consumer Shopify brand 
 - Average selling price: mid-market consumer accessories
 - Growth strategy: paid acquisition + seasonal discounting + bundles
 
-## Strategic tension behind Project 2
+## Strategic tension behind the Project 
 Leadership is seeing healthy top-line sales, but margin is under pressure. The management team suspects four issues:
 1. Some best-selling products may be generating weak contribution profit after discounts, refunds, shipping, and payment fees.
 2. Some products may have quality or expectation gaps that drive refunds.

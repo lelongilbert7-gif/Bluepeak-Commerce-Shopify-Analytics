@@ -1,0 +1,18 @@
+-- ============================================
+-- Analysis: Profit Leakage Analysis
+-- Author: Gilbert
+-- Dataset: BluePeak_Staging.fact_profitability
+-- Purpose: Identify where the business is losing money
+-- ============================================
+SELECT
+    product_name,
+    SUM(gross_line_revenue) AS revenue,
+    SUM(line_item_cost) AS cost,
+    SUM(lineitem_discount_amount) AS discounts,
+    SUM(allocated_refund_amount) AS refunds,
+    SUM(allocated_payment_fee) AS fees,
+    SUM(contribution_profit) AS profit
+FROM `bluepeak-commerce-analytics.BluePeak_Staging.fact_profitability`
+GROUP BY product_name
+ORDER BY profit ASC;
+

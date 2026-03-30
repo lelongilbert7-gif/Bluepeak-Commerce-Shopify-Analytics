@@ -1,0 +1,14 @@
+-- ============================================
+-- Analysis: High_Risk_Orders
+-- Author: Gilbert
+-- Dataset: BluePeak_Staging.fact_profitability
+-- Purpose: Determine whether risky orders are costing us money
+-- ============================================
+SELECT
+    risk_level,
+    COUNT(DISTINCT order_id) AS orders,
+    SUM(gross_line_revenue) AS revenue,
+    SUM(contribution_profit) AS profit
+FROM `bluepeak-commerce-analytics.BluePeak_Staging.fact_profitability`
+GROUP BY risk_level
+ORDER BY profit ASC;

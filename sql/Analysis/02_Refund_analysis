@@ -1,0 +1,15 @@
+-- ============================================
+-- Analysis: Problem Products (Refund Analysis)
+-- Author: Gilbert
+-- Dataset: BluePeak_Staging.fact_profitability
+-- Purpose: Identify which products are killing profit through refunds
+-- ============================================
+SELECT
+    product_name,
+    SUM(gross_line_revenue) AS revenue,
+    SUM(allocated_refund_amount) AS total_refunds,
+    SAFE_DIVIDE(SUM(allocated_refund_amount), SUM(gross_line_revenue)) AS refund_rate,
+    SUM(contribution_profit) AS profit
+FROM `bluepeak-commerce-analytics.BluePeak_Staging.fact_profitability`
+GROUP BY product_name
+ORDER BY refund_rate DESC;

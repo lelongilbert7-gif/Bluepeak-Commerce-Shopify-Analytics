@@ -233,17 +233,46 @@ The biggest opportunity is improving the economics of high-revenue products rath
 
 ```text
 BluePeak-Commerce-Analytics/
+│
 ├── README.md
+│
+├── data/
+│   └── raw_sample_note.txt
+│
 ├── docs/
+│   ├── company_profile.md
+│   └── data_dictionary.md
+│
 ├── sql/
-│   ├── 01_stg_customers.sql
-│   ├── 02_stg_products.sql
-│   ├── 03_stg_orders.sql
-│   ├── 04_stg_order_items.sql
-│   ├── 05_stg_refunds.sql
-│   ├── 06_stg_transactions.sql
-│   ├── 07_data_validation.sql
-│   ├── 08_fact_profitability.sql
-│   └── 09_analysis_queries.sql
+│   ├── 01_staging/
+│   │   ├── stg_customers.sql
+│   │   ├── stg_products.sql
+│   │   ├── stg_orders.sql
+│   │   ├── stg_order_items.sql
+│   │   ├── stg_refunds.sql
+│   │   └── stg_transactions.sql
+│   │
+│   ├── 02_intermediate/
+│   │   └── data_validation.sql
+│   │
+│   ├── 03_marts/
+│   │   ├── fact_profitability.sql
+│   │   └── validation_fact_table.sql
+│   │
+│   └── 04_analysis/
+│       ├── 01_profit_leakage.sql
+│       ├── 02_refund_analysis.sql
+│       ├── 03_discount_impact.sql
+│       ├── 04_customer_profitability.sql
+│       ├── 05_revenue_vs_profit.sql
+│       ├── 06_channel_performance.sql
+│       └── 07_high_risk_orders.sql
+│
 ├── powerbi/
-└── data/
+│   ├── dashboard.pbix
+│   └── dashboard.png
+│
+└── analysis_notes/
+    ├── findings_summary.md
+    ├── key_metrics.md
+    └── recommendations.md
